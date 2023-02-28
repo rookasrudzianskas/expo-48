@@ -5,6 +5,7 @@ import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import { useNavigation } from 'expo-router';
 import React, {useLayoutEffect, useState} from "react";
+import { FlatList } from 'react-native';
 
 export default function TabTwoScreen() {
   const blurhash =
@@ -21,17 +22,30 @@ export default function TabTwoScreen() {
   const [seed, setSeed] = useState(696)
 
   return (
-    <TouchableOpacity onPress={() => setSeed(seed + 1)} style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Image
-        style={styles.image}
-        source={`https://picsum.photos/seed/${seed}/3000/2000`}
-        placeholder={blurhash}
-        contentFit="cover"
-        transition={1000}
-      />
-    </TouchableOpacity>
+    <FlatList
+      data={Array(120).fill(0)}
+      renderItem={({ index }) => (
+        <Image
+          style={styles.image}
+          contentFit="cover"
+          source={`https://picsum.photos/seed/${index}/720`}
+        />
+      )}
+      numColumns={3}
+      contentContainerStyle={{ gap: 20 }}
+      columnWrapperStyle={{ gap: 10 }}
+    />
+    // <TouchableOpacity onPress={() => setSeed(seed + 1)} style={styles.container}>
+    //   <Text style={styles.title}>Tab Two</Text>
+    //   <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    //   <Image
+    //     style={styles.image}
+    //     source={`https://picsum.photos/seed/${seed}/3000/2000`}
+    //     placeholder={blurhash}
+    //     contentFit="cover"
+    //     transition={1000}
+    //   />
+    // </TouchableOpacity>
   );
 }
 
