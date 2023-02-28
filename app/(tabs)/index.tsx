@@ -3,11 +3,13 @@ import { StyleSheet, FlatList, View } from 'react-native';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.box} />
-      <View style={styles.box} />
-      <View style={styles.box} />
-      <View style={styles.box} />
-      <View style={styles.box} />
+      <FlatList
+        data={Array(12).fill(0)}
+        renderItem={() => <View style={styles.box} />}
+        numColumns={3}
+        contentContainerStyle={{ gap: 20 }}
+        columnWrapperStyle={{ gap: 10 }}
+      />
     </View>
   );
 }
@@ -15,8 +17,6 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     backgroundColor: 'white',
   },
   box: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderColor: 'aqua',
     borderWidth: 1,
 
-    width: 150,
-    height: 150,
+    flex: 1,
+    aspectRatio: 1,
   },
 });
