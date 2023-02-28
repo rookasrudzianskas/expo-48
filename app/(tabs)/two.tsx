@@ -24,6 +24,7 @@ export default function TabTwoScreen() {
   return (
     <FlatList
       data={Array(120).fill(0)}
+      showsVerticalScrollIndicator={false}
       renderItem={({ index }) => (
         <Image
           style={styles.image}
@@ -32,8 +33,8 @@ export default function TabTwoScreen() {
         />
       )}
       numColumns={3}
-      contentContainerStyle={{ gap: 20 }}
-      columnWrapperStyle={{ gap: 10 }}
+      // contentContainerStyle={{ gap: 20 }}
+      // columnWrapperStyle={{ gap: 10 }}
     />
     // <TouchableOpacity onPress={() => setSeed(seed + 1)} style={styles.container}>
     //   <Text style={styles.title}>Tab Two</Text>
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: '100%',
+    aspectRatio: 1,
     backgroundColor: '#0553',
   },
 });
